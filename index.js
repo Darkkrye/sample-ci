@@ -3,6 +3,7 @@ var api = express()
 var _ = require('lodash')
 var bodyparser = require('body-parser')
 
+var DEFAULT_PORT = 3000
 var contacts = []
 
 api.get('/', function(req, res, next) {
@@ -55,6 +56,7 @@ api.delete('/contacts/:name', function(req, res, next) {
 })
 
 //console.log('API listening on port 3000')
-api.listen(3000)
+var port = process.env.PORT || DEFAULT_PORT
+api.listen(port)
 
 module.exports = api;

@@ -22,21 +22,25 @@ describe('API', function() {
 
         it('POST /contacts should create a new contact', function() {
             return request(api)
-            .post('/contact')
-            .send({ name: "edward" })
+            .post('/contacts')
+            .send({
+                contact: {
+                    name: "edward"
+                }
+            })
             .expect(200)
         })
 
         it ('PUT /contacts/:name/:new should update all contacts with the same name', function() {
             return request(api)
-            .post('/contacts/foo/bar')
+            .put('/contacts/foo/bar')
             .send()
             .expect(200)
         })
 
         it ('DELETE /contacts/:name should remove all contacts with the same name', function() {
             return request(api)
-            .post('/contacts/foo')
+            .delete('/contacts/foo')
             .send()
             .expect(200)
         })
